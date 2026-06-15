@@ -1,0 +1,26 @@
+[
+  {
+    "code": "OP01-003",
+    "name": "Monkey D. Luffy",
+    "rarity": "R",
+    "price": 300
+  },
+  {
+    "code": "OP01-025",
+    "name": "Roronoa Zoro",
+    "rarity": "SR",
+    "price": 450
+  },
+  {
+    "code": "OP01-121",
+    "name": "Shanks",
+    "rarity": "SEC",
+    "price": 2800
+  },
+  {
+    "code": "OP02-004",
+    "name": "Edward Newgate",
+    "rarity": "SR",
+    "price": 700
+  }
+]
