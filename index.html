@@ -10,31 +10,102 @@ body{
 font-family:Arial,sans-serif;
 background:#111827;
 color:white;
-margin:0;
 padding:20px;
+margin:0;
 }
 
-.header{
+h1{
 text-align:center;
-margin-bottom:20px;
 }
 
 .search{
 width:100%;
 padding:15px;
-border:none;
 border-radius:10px;
+border:none;
 font-size:16px;
 box-sizing:border-box;
+margin-bottom:20px;
 }
 
 .card{
 background:#1f2937;
 padding:15px;
 border-radius:12px;
-margin-top:15px;
+margin-bottom:10px;
 }
 
+.price{
+color:#22c55e;
+font-size:22px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h1>🏴‍☠️ OP Price TH</h1>
+
+<input
+id="searchInput"
+class="search"
+placeholder="ค้นหาการ์ด..."
+>
+
+<div id="cards"></div>
+
+<script>
+
+let allCards = [];
+
+fetch("cards.json")
+.then(res => res.json())
+.then(data => {
+    allCards = data;
+    showCards(data);
+});
+
+function showCards(cards){
+
+    const container =
+    document.getElementById("cards");
+
+    container.innerHTML =
+    cards.map(card => `
+        <div class="card">
+            <h3>${card.name}</h3>
+            <p>${card.code}</p>
+            <p>${card.rarity}</p>
+            <div class="price">
+                ${card.price} บาท
+            </div>
+        </div>
+    `).join("");
+
+}
+
+document
+.getElementById("searchInput")
+.addEventListener("input", function(){
+
+    const keyword =
+    this.value.toLowerCase();
+
+    const filtered =
+    allCards.filter(card =>
+        card.name.toLowerCase().includes(keyword)
+        ||
+        card.code.toLowerCase().includes(keyword)
+    );
+
+    showCards(filtered);
+
+});
+
+</script>
+
+</body>
+</html>
 .price{
 font-size:24px;
 font-weight:bold;
